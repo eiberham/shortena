@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+  background: black;
+}
+
+.content {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas: "content";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+
+    form {
+      padding: 2rem;
+      font-size: 1rem;
+
+      span {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
