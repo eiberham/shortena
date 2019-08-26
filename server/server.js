@@ -1,4 +1,5 @@
 const express = require('express');
+const models = require('./models');
 const next = require('next');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -51,9 +52,10 @@ app.prepare().then( () => {
     server.use(bodyParser.json());
     server.use(cors());
 
-    server.use('/graphql', bodyParser.json(), graphqlExpress({
-        schema
-    }));
+    server.use('/graphql', bodyParser.json(), graphqlExpress(req => ({
+        schema,
+        context: {req: req}
+    })));
 
     server.use('/graphiql', graphiqlExpress({
         endpointURL: '/graphql'

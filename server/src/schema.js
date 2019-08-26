@@ -8,8 +8,19 @@ const typeDefs = `
       email: String
     }
     
+    type Urls {
+        id: ID
+        short: String
+        target: String
+    }
+    
     type Query {
       users: [User]    # "[]" means this is a list of users
+      urls: [Urls]
+    }
+    
+    type Mutation {
+        shorten(url: String): Urls
     }
 `;
 
