@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UrlsSchema = new Schema({
-    shorten: String,
+    short: String,
     target: String,
 });
 

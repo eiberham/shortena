@@ -1,15 +1,15 @@
 const express = require('express');
-const models = require('./models');
+import {
+    graphqlExpress,
+    graphiqlExpress,
+} from 'graphql-server-express';
 const next = require('next');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const cors = require('cors');
-import {
-    graphqlExpress,
-    graphiqlExpress,
-} from 'graphql-server-express';
+import models from './models';
 import { schema } from './src/schema';
 
 const port = process.env.PORT || 3000;
