@@ -61,9 +61,25 @@ app.prepare().then( () => {
         endpointURL: '/graphql'
     }));
 
-    server.get('*', (req, res) => {
-        console.log("request: ", req.path);
-        return handle(req, res);
+    server.get('*', (req, res, next) => {
+        /**
+         * This regexp matches the path /:id for further insight
+         * go on https://forbeslindesay.github.io/express-route-tester/
+         */
+        if(!req.path.match(/^\/(?:([^\/]+?))\/?$/i))
+            return handle(req, res);
+        next()
+    });
+
+    server.get('/:id', (req, res) => {
+        let short = req.params.id;
+        const Urls = mongoose.model('urls');
+        Urls.findOne({ short }, (err, doc) => {
+            if (doc) return res.redirect(doc.target);
+            res.status(404);
+            handle(req, res);
+        });
+
     });
 
     server.listen(port, err => {

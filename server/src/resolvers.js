@@ -5,11 +5,9 @@ const Urls = mongoose.model('urls');
 export const resolvers = {
     Mutation: {
         shorten: (root, {url}, req) => {
-            const baseUrl = new URL(url).origin;
             const code = shortid.generate();
-
             const urls = new Urls({
-                short: `${baseUrl}/${code}`,
+                short: `${location.origin}/${code}`,
                 target: url
             });
 

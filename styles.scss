@@ -21,7 +21,13 @@ html {
     align-items: center;
     font-family: 'Dosis', sans-serif;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.2rem;
+
+    img {
+      margin: 1rem;
+      width: 50%;
+      height: 50%;
+    }
 
     form {
       padding: 2rem;
@@ -29,7 +35,7 @@ html {
 
       span {
         font-family: 'Josefin Sans', sans-serif;
-        font-size: 1.2rem;
+        font-size: 0.1rem;
       }
     }
   }
