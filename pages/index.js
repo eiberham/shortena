@@ -2,17 +2,12 @@ import Link from 'next/link';
 import Head from 'next/head';
 import '../styles.scss';
 import React from "react";
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import mutation from '../mutations/Shorten';
 import ShortenerForm from '../components/Forms/ShortenerForm';
-
-const client = new ApolloClient({
-    uri: 'http://localhost:3000/graphql'
-});
+import { withApollo } from '../lib/apollo';
 
 const UrlSchema = Yup.object().shape({
     url: Yup.string()
@@ -22,7 +17,7 @@ const UrlSchema = Yup.object().shape({
 const Index = () => {
     const [trimlink, {loading}] = useMutation(mutation);
     return (
-        <ApolloProvider client={client}>
+        <React.Fragment>
             <Head>
                 <title>Shortena</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -50,8 +45,8 @@ const Index = () => {
                 </div>
 
             </section>
-        </ApolloProvider>
+        </React.Fragment>
     )
 };
 
-export default Index;
+export default withApollo(Index);
