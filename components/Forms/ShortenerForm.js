@@ -25,8 +25,8 @@ const ShortenerForm = (props) => {
                 name="url"
                 type="text"
                 focus
-                action={{color: 'teal', content: 'Shorten', type: 'submit'}}
-                size="small"
+                action={{color: 'teal', content: 'Trim', type: 'submit'}}
+                size="massive"
                 placeholder="Enter url..."
                 value={ url }
                 onChange={change.bind(null, "url")}

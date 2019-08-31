@@ -6,4 +6,4 @@ const UrlsSchema = new Schema({
     target: String,
 });
 
-mongoose.model('urls', UrlsSchema);
+mongoose.model('urls', UrlsSchema, 'urls');

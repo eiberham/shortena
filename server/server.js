@@ -74,7 +74,7 @@ app.prepare().then( () => {
     server.get('/:id', (req, res) => {
         let short = req.params.id;
         const Urls = mongoose.model('urls');
-        Urls.findOne({ short }, (err, doc) => {
+        Urls.findOne({ short: `${short}` }, (err, doc) => {
             if (doc) return res.redirect(doc.target);
             res.status(404);
             handle(req, res);

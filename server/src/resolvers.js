@@ -7,7 +7,7 @@ export const resolvers = {
         shorten: (root, {url}, req) => {
             const code = shortid.generate();
             const urls = new Urls({
-                short: `http://localhost:3000/${code}`,
+                short: `${code}`,
                 target: url
             });
 

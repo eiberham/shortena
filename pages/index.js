@@ -17,6 +17,7 @@ const UrlSchema = Yup.object().shape({
 
 const Index = () => {
     const [outputValue, setOutputValue] = useState('');
+    const [outputClassName, setOutputClassName] = useState('hide');
     const outputElement = useRef(null);
     const [trimlink, {loading}] = useMutation(mutation);
 
@@ -42,40 +43,45 @@ const Index = () => {
             </Head>
             <section className="content">
                 <div className="wrapper">
-                    <div className="logo"></div>
-                    <span>Enter the url you want to shorten below</span>
-                    <Formik
-                        render={props => <ShortenerForm {...props} />}
-                        initialValues={{url: ''}}
-                        validationSchema={UrlSchema}
-                        onSubmit={ async ({url}) => {
-                            try {
-                                const {data: {shorten}} = await trimlink({variables: {url}});
-                                if(shorten){
-                                    setOutputValue(shorten.short);
+                    
+                    <span>Link Shortener</span>
+                    <Segment size="massive" inverted>
+                        <Formik
+                            render={props => <ShortenerForm {...props} />}
+                            initialValues={{url: ''}}
+                            validationSchema={UrlSchema}
+                            onSubmit={ async ({url}) => {
+                                try {
+                                    const {data: {shorten}} = await trimlink({variables: {url}});
+                                    if(shorten){
+                                        const output = `${location.origin}/${shorten.short}`;
+                                        setOutputValue(output);
+                                        setOutputClassName('show');
+                                    }
+                                }catch(error){
+                                    console.error(error);
                                 }
-                            }catch(error){
-                                console.error(error);
-                            }
-                        }}
-                    />
-                    <Segment inverted >
+                            }}
+                        />
+                    </Segment>
+                    
+                    <Segment size="massive" inverted className={outputClassName}>
                         <Input
                             ref={outputElement}
                             id="output"
                             name="output"
                             type="text"
-                            size="large"
+                            size="massive"
+                            placeholder="Trimmed link ..."
                             value={outputValue}
                             action={{
                                 placeholder: '',
                                 color: 'teal',
-                                icon: 'copy',
+                                content: 'Copy',
                                 onClick: () => {
                                     copyToClipboard();
                                 }
                             }}
-                            defaultValue=''
                         />
                     </Segment>
                 </div>
