@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server/index.js",
     "build": "next build",
-    "now-build": "npm run prepare && next build && NODE_ENV=production node server/index.js",
+    "now-build": "next build && NODE_ENV=production node server/index.js",
     "start": "NODE_ENV=production node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
