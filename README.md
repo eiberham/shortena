@@ -8,6 +8,15 @@ copy into clipboard the output url for sharing.
   <img src="shortena.png" />
 </p>
 
+<table>
+  <tr>
+    <td><img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/wwleak/shortena?style=for-the-badge"></td>
+    <td><img alt="GitHub top language" src="https://img.shields.io/github/languages/top/wwleak/shortena?style=for-the-badge"></td>
+    <td><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/wwleak/shortena?style=for-the-badge"></td>
+    <td><img alt="GitHub issues" src="https://img.shields.io/github/issues/wwleak/shortena?style=for-the-badge"></td>
+  </tr>
+</table>
+
 ## How to run it ?
 
 First, clone the repo:
